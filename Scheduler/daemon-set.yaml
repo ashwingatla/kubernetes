@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: server-monitor
+  labels:
+    app: monitor
+spec:
+  selector:
+    matchLabels:
+      app: pod-monitor
+  template:
+      metadata:
+        name: pod-monitor
+        labels:
+          app: pod-monitor
+      spec:
+        containers:
+          - name: busybox
+            image: busybox
